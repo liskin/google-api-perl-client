@@ -1,0 +1,28 @@
+Source: libgoogle-api-client-perl
+Section: perl
+Priority: optional
+Maintainer: Tomas Janousek <tomi@nomi.cz>
+Build-Depends: debhelper (>= 9),
+ perl
+Build-Depends-Indep: libhttp-message-perl,
+ libjson-perl,
+ liblwp-protocol-https-perl,
+ libmodule-build-tiny-perl (>= 0.038),
+ libtest-tcp-perl,
+ liburi-perl
+Standards-Version: 3.9.6
+Homepage: https://metacpan.org/release/Google-API-Client
+
+Package: libgoogle-api-client-perl
+Architecture: all
+Depends: ${misc:Depends}, ${perl:Depends},
+ libhttp-message-perl,
+ libjson-perl,
+ liblwp-protocol-https-perl,
+ liburi-perl
+Recommends:
+ libjson-webtoken-perl
+Description: A client for Google APIs Discovery Service
+ (no description was found)
+ .
+ This description was automagically extracted from the module by dh-make-perl.
