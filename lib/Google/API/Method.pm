@@ -79,17 +79,17 @@ sub execute {
         return 1;
     }
     return $response->header('content-type') =~ m!^application/json!
-           ? $self->{json_parser}->decode(decode_utf8($response->content))
-           : $response->content
+           ? $self->{json_parser}->decode($response->decoded_content)
+           : $response->decoded_content
            ;
 }
 
 sub _die_with_error {
     my ($self, $response) = @_;
     my $err_str = $response->status_line;
-    if ($response->content
+    if ($response->decoded_content
         && $response->header('content-type') =~ m!^application/json!) {
-        my $content = $self->{json_parser}->decode(decode_utf8($response->content));
+        my $content = $self->{json_parser}->decode($response->decoded_content);
         $err_str = "$err_str: $content->{error}{message}";
     }
     die $err_str;
